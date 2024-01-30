@@ -39,11 +39,11 @@ class AddBookController extends GetxController {
           data: {"judul" : judulController.text.toString(),
                  "penulis" : penulisController.text.toString(),
                  "penerbit" : penerbitController.text.toString(),
-                 "tahun-terbit" : int.parse(tahunterbitController.text.toString()),
+                 "tahun_terbit" : int.parse(tahunterbitController.text.toString()),
       });
       if (response.statusCode == 201) {
         await StorageProvider.write(StorageKey.status, "logged");
-        Get.offAllNamed(Routes.HOME);
+        Get.offAllNamed(Routes.BOOK);
       } else {
         Get.snackbar("sorry", "Login Gagal", backgroundColor: Colors.orange);
       }
