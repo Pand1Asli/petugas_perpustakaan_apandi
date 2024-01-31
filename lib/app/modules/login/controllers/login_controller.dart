@@ -30,7 +30,6 @@ class LoginController extends GetxController {
     if(status == 'logged'){
       Get.offAllNamed(Routes.HOME);
     }
-
   }
 
   @override
