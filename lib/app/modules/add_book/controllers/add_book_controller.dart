@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart' as dio;
+import 'package:petugas_perpustakaan_kelas_c/app/modules/book/controllers/book_controller.dart';
 import '../../../data/constant/endpoint.dart';
 import '../../../data/provider/api_provider.dart';
 import '../../../data/provider/storage_provider.dart';
@@ -14,6 +15,7 @@ class AddBookController extends GetxController {
   final TextEditingController penerbitController = TextEditingController();
   final TextEditingController tahunterbitController = TextEditingController();
   final loading = false.obs;
+  final BookController _bookController = Get.find();
 
   final count = 0.obs;
   @override
@@ -42,6 +44,7 @@ class AddBookController extends GetxController {
                  "tahun_terbit" : int.parse(tahunterbitController.text.toString()),
       });
       if (response.statusCode == 201) {
+        _bookController.getData();
         await StorageProvider.write(StorageKey.status, "logged");
         Get.offAllNamed(Routes.BOOK);
       } else {
