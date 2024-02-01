@@ -9,7 +9,7 @@ void main() {
   GetStorage.init();
   runApp(
     GetMaterialApp(
-      title: "Application",
+      title: "Petugas",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),
